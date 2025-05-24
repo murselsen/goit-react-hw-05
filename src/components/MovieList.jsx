@@ -11,7 +11,12 @@ const MovieList = ({
             {data ? (
                 data.map((item, index) => {
                     return (
-                        <MovieListItem key={index} image={item.poster_path} title={item.title} description={item.overview} />
+                        <MovieListItem
+                            key={index}
+                            image={item.poster_path}
+                            title={item.title}
+                            description={item.overview}
+                        />
                     )
                 })
             ) : (
@@ -21,13 +26,19 @@ const MovieList = ({
     )
 }
 
-const MovieListItem = ({ image, title, description }) => {
+const MovieListItem = ({
+    movieId,
+    image,
+    title,
+    description
+}) => {
     return (
         <div className={Css.MovieItem}>
             <div className={Css.Media}>
-                <img src={'https://image.tmdb.org/t/p/w500/' + image} alt={'1E5baAaEse26fej7uHcjOgEE2t2'} />
+                <img src={'https://image.tmdb.org/t/p/w500/' + image} alt={image.split('.')[0]} />
             </div>
             <div className={Css.Content}>
+
                 <div className={Css.Info}>
                     <h2 className={Css.Title}>
                         {title}
@@ -36,9 +47,12 @@ const MovieListItem = ({ image, title, description }) => {
                         {description ? description : 'No description available'}
                     </p>
                 </div>
+
                 <div className={Css.Action}>
-                    <Link to='/a' className={Css.Btn}>View</Link>
+                    <Link to={"/movies/"} className={Css.Btn}>View</Link>
+
                 </div>
+
             </div>
         </div>
     );

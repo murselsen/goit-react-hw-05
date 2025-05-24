@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import Css from './MoviesPage.module.css';
-// import { FaSearch } from "react-icons/fa";
+import MovieList from '../components/MovieList';
 import { CiSearch } from "react-icons/ci";
+
 const MoviesPage = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchedMovies, setSearchedMovies] = useState();
+    const movies = [];
+    // const [searchTerm, setSearchTerm] = useState('');
+    // const [searchedMovies, setSearchedMovies] = useState();
     return (
         <div className={Css.MoviesPage}>
             <div className={Css.MoviesPageCard}>
@@ -16,7 +18,8 @@ const MoviesPage = () => {
                     </div>
 
                     <button className={Css.Btn} type="submit">
-                        <CiSearch color='currentcolor' size={40} > Search </CiSearch> </button>
+                        <CiSearch color='currentcolor' size={40} />
+                    </button>
                 </form>
             </div>
             <div className={Css.MoviesPageCard}>

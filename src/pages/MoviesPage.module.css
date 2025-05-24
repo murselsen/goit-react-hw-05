@@ -3,6 +3,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 50px;
     padding: 30px;
 }
 
@@ -19,24 +20,19 @@
     width: 25%;
     display: flex;
     justify-content: space-between;
-
-
 }
 
 .MoviesPageCard .Form .InputGroup {
     background: var(--color-fifth);
     width: 100%;
-
     padding: 20px 25px;
     outline: none;
     font-size: 17px;
     display: flex;
     align-items: center;
     gap: 10px;
-
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-
 }
 
 .MoviesPageCard .Form .InputGroup .Input {
