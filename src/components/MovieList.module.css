@@ -1,0 +1,88 @@
+.MovieList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 25px;
+    column-gap: 0px;
+    margin: 50px 0;
+}
+
+.MovieList .MovieItem {
+    width: 90%;
+    height: 100%;
+    min-height: 170px;
+    max-height: fit-content;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px var(--color-secondary);
+    display: flex;
+    gap: 20px;
+    background-color: #fff;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.MovieList .MovieItem:hover {
+    box-shadow: 9px 6px 10px var(--color-fourth);
+    transform: scale(1.02);
+}
+
+.MovieList .MovieItem .Media {
+    flex: 1;
+    max-width: 100px;
+
+}
+
+.MovieList .MovieItem .Media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.MovieList .MovieItem .Content {
+    flex: 2;
+    display: flex;
+}
+
+.MovieList .MovieItem .Content .Info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.MovieList .MovieItem .Content .Info .Title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-fourth);
+    text-shadow: 2px 2px 0.5px var(--color-secondary);
+}
+
+.MovieList .MovieItem .Content .Action {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.MovieList .MovieItem .Content .Action .Btn {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    align-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-fourth);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.MovieList .MovieItem .Content .Action .Btn:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-fourth);
+    font-weight: 700;
+    transform: scale(1.05);
+}

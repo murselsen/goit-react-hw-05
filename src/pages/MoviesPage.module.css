@@ -1,0 +1,19 @@
+.MoviesPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.MoviesPageCard {
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.MoviesPageCard .Form {
+    border: 1px solid yellow;
+
+}
