@@ -8,12 +8,60 @@
 
 .MoviesPageCard {
     width: 100%;
-    background-color: white;
+    height: max-content;
+    background-color: var(--color-fourth);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 .MoviesPageCard .Form {
-    border: 1px solid yellow;
+    color: black;
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
 
+
+}
+
+.MoviesPageCard .Form .InputGroup {
+    background: var(--color-fifth);
+    width: 100%;
+
+    padding: 20px 25px;
+    outline: none;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+}
+
+.MoviesPageCard .Form .InputGroup .Input {
+    width: 100%;
+    background: transparent;
+}
+
+.MoviesPageCard .Form .Btn {
+    background: var(--color-primary);
+    color: var(--color-fourth);
+    padding: 10px 20px;
+    text-align: center;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    align-content: center;
+}
+
+.MoviesPageCard .Form .Btn:hover {
+    background: var(--color-fourth);
+    color: var(--color-primary);
+    font-weight: 800;
+    border: 3px solid var(--color-primary);
+    border-inline-start: 0px;
 }
