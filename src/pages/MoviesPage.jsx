@@ -11,14 +11,28 @@ const MoviesPage = () => {
     return (
         <div className={Css.MoviesPage}>
             <div className={Css.MoviesPageCard}>
-                <form action="/movies" className={Css.Form}>
+                <form
+                    action="/movies"
+                    className={Css.Form}>
                     <div className={Css.InputGroup}>
-                        <CiSearch color='currentcolor' size={24} />
-                        <input className={Css.Input} name='filmName' type="text" placeholder="Search for a movie..." />
+                        <CiSearch
+                            color='currentcolor'
+                            size={24} />
+                        <input
+                            className={Css.Input}
+                            name='filmName'
+                            type="text"
+                            placeholder="Search for a movie..."
+                        />
                     </div>
 
-                    <button className={Css.Btn} type="submit">
-                        <CiSearch color='currentcolor' size={40} />
+                    <button
+                        className={Css.Btn}
+                        type="submit">
+                        <CiSearch
+                            color='currentcolor'
+                            size={40}
+                        />
                     </button>
                 </form>
             </div>
