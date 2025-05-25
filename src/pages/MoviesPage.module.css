@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-    padding: 30px;
+    padding: 15px;
 }
 
 .MoviesPageCard {
@@ -60,4 +60,51 @@
     font-weight: 800;
     border: 3px solid var(--color-primary);
     border-inline-start: 0px;
+}
+
+/* Media Details Page - Styles */
+.MoviesPageCard.MovieDetailsCard {
+    width: 85%;
+    margin: 50px auto;
+    background-color: var(--color-fourth);
+    padding: 30px;
+    color: var(--color-secondary);
+    display: flex;
+    gap: 30px;
+}
+
+
+.MoviesPageCard.MovieDetailsCard .Media {
+    flex: 1;
+}
+
+.MoviesPageCard.MovieDetailsCard .Media img {
+    width: 100%;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.MoviesPageCard.MovieDetailsCard .Content {
+    flex: 2;
+}
+
+.MoviesPageCard.MovieDetailsCard .Content .ContentItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.MoviesPageCard.MovieDetailsCard .Content .ContentItem .Label {
+    font-weight: 500;
+    color: var(--color-primary);
+    font-size: 16px;
+}
+
+
+.MoviesPageCard.MovieDetailsCard .Content .ContentItem .Badge {
+    background: var(--color-fifth);
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 15px;
+    ;
 }
