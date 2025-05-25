@@ -8,12 +8,18 @@ const MoviesPage = () => {
     const movies = [];
     // const [searchTerm, setSearchTerm] = useState('');
     // const [searchedMovies, setSearchedMovies] = useState();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const { filmName } = event.target.elements;
+        console.log('Search term:', filmName.value);
+
+    };
     return (
         <div className={Css.MoviesPage}>
             <div className={Css.MoviesPageCard}>
                 <form
                     action="/movies"
-                    className={Css.Form}>
+                    className={Css.Form} onSubmit={handleSubmit}>
                     <div className={Css.InputGroup}>
                         <CiSearch
                             color='currentcolor'
@@ -36,9 +42,7 @@ const MoviesPage = () => {
                     </button>
                 </form>
             </div>
-            <div className={Css.MoviesPageCard}>
-                <MovieList data={movies} />
-            </div>
+            {!movies ? <div className={Css.MoviesPageCard}><MovieList data={movies} /></div> : null}
 
         </div>
     );
