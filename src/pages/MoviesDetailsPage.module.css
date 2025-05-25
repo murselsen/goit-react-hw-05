@@ -1,0 +1,73 @@
+/* Media Details Page - Styles */
+.MoviesPage {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.MovieDetailsCard {
+    width: 55%;
+    margin: 50px auto;
+    background-color: var(--color-fourth);
+    padding: 30px;
+    color: var(--color-secondary);
+    display: flex;
+    gap: 30px;
+}
+
+
+.MovieDetailsCard .Media {
+    flex: 1;
+}
+
+.MovieDetailsCard .Media img {
+    width: 100%;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.MovieDetailsCard .Content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.MovieDetailsCard .Content .ContentItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.MovieDetailsCard .Content .ContentItem .Label {
+    font-weight: 500;
+    color: var(--color-primary);
+    font-size: 16px;
+}
+
+.MovieDetailsCard .Content .ContentItem .Badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.MovieDetailsCard .Content .ContentItem .Badges span,
+.MovieDetailsCard .Content .ContentItem .Badge {
+    background: var(--color-fifth);
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 15px;
+    ;
+}
+
+.MovieDetailsCard .Content .ContentItem .Badges span:hover {
+    background: var(--color-primary);
+    color: var(--color-fourth);
+    padding: 10px 20px;
+}
+
+.MovieDetailsCard .Content .ContentItem .Description {
+    padding: 10px;
+    width: 100%;
+    line-height: 1.4;
+}
