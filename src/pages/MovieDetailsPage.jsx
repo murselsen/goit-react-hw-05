@@ -25,8 +25,9 @@ const MovieDetailsPage = () => {
     }, [id]);
 
     const { title, poster_path, overview, vote_average, vote_count, genres } = movie || {};
+    console.log("Movie: ", movie);
     return (
-        console.log("Movie: ", movie),
+
         <div className={Css.MoviesPage}>
             <div className={Css.MovieDetailsCard}>
                 <div className={Css.Media}>
@@ -34,47 +35,25 @@ const MovieDetailsPage = () => {
                 </div>
                 <div className={Css.Content}>
                     <h1 className={Css.Title}>{title}</h1>
-                    <p className={Css.Description}>
-                        {
-                            overview ? overview : 'No description available'
-                        }
-                    </p>
-
-                    {/*   <div className={Css.ContentItem}>
-                        <label className={Css.Label}>Title</label>
-                        <h1 className={[Css.Title, Css.Badge].join(' ')}>
-                            {title}
-                        </h1>
-                    </div>
-                  
-                    <div className={Css.ContentItem}>
-                        <label className={Css.Label}>Vote</label>
-                        <h4 className={[Css.Title, Css.Badge].join(' ')}>
-                            {vote_count}
-                        </h4>
-                    </div>
-                    <div className={Css.ContentItem}>
-                        <label className={Css.Label}>Overview</label>
-                        <p className={[Css.Description, Css.Badge].join(' ')}>
-                            {overview}
-                        </p>
-                    </div>
-                    <div className={Css.ContentItem}>
-                        <label className={Css.Label}>Genres</label>
-                        <div className={Css.Badges}>
-
-                            {genres ? genres.map((genre) => <span key={genre.id}>{genre.name}</span>) : <span>No genres available</span>}
-
-                        </div>
-                    </div>
- */}
-
-
+                    <ContentItem label="User Score:" value={`${Math.round(vote_average * 10)}%`} />
+                    <ContentItem label="Overview:" altValue={overview} />
                 </div>
             </div>
         </div>
     );
 
 }
+
+
+const ContentItem = ({ label, value, altValue }) => {
+    return (
+        <div className={Css.ContentItem}>
+            {label && <label className={Css.Label}>{label}</label>}
+            {value && <h4 className={Css.Title}>{value}</h4>}
+            {altValue && <p className={Css.Description}>{altValue}</p>}
+        </div>
+    )
+}
+
 
 export default MovieDetailsPage
