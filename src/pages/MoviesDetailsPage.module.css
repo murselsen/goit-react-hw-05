@@ -1,13 +1,13 @@
 /* Media Details Page - Styles */
 .MoviesPage {
-    width: 100%;
+    margin: 50px auto;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
 }
 
 .MovieDetailsCard {
-    width: 55%;
-    margin: 50px auto;
+    width: 100%;
     background-color: var(--color-fourth);
     padding: 30px;
     color: var(--color-secondary);
@@ -27,6 +27,7 @@
 }
 
 .MovieDetailsCard .Content {
+    padding: 40px 0;
     flex: 2;
     display: flex;
     flex-direction: column;
