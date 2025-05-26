@@ -14,14 +14,17 @@ import { CiSearch } from "react-icons/ci";
 import getMovieByName from '../utils/getMovieByName';
 
 const MoviesPage = () => {
-    const movies = null;
+
     const [searchParams, setSearchParams] = useSearchParams();
-    const [results, setResults] = useState();
+    const [results, setResults] = useState([]);
 
     const handleChangeForm = (event) => {
         event.preventDefault();
         const query = event.target;
         // console.log('Search term:', query.value);
+        if (!query.value) {
+            setSearchParams();
+        }
         setSearchParams({
             query: query.value,
         });
@@ -39,7 +42,7 @@ const MoviesPage = () => {
         if (query) {
             getMovieByName(query)
                 .then(res => {
-                    console.log('Search results:', res.data.results);
+                    console.log(res.data.results)
                     setResults(res.data.results);
                 })
                 .catch(err => {
@@ -78,9 +81,8 @@ const MoviesPage = () => {
                     </button>
                 </form>
             </div>
-            {results && <div className={Css.MoviesPageCard}>
-                <MovieList data={results} /></div>}
-
+            {console.log("Results:", results)}
+            {results < 0 ? <div className={Css.MoviesPageCard}><MovieList data={results} /></div> : null}
         </div>
     );
 }
