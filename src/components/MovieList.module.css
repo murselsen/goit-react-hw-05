@@ -9,15 +9,15 @@
 }
 
 .MovieList .MovieItem {
-    width: 90%;
-    height: 100%;
-    min-height: 170px;
+    width: 45%;
+    height: auto;
+    min-height: 200px;
     max-height: fit-content;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 1px 1px 1px var(--color-secondary);
     display: flex;
-    gap: 20px;
+    gap: 30px;
     background-color: #fff;
     color: var(--color-primary);
     transition: all 0.3s ease;

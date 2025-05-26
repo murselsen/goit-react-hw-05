@@ -1,32 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import getMovieById from '../utils/getMovieById';
 
+
+// Styles
 import Css from './MoviesPage.module.css';
+
+// Components
 import MovieList from '../components/MovieList';
+
+// Icons
 import { CiSearch } from "react-icons/ci";
+import getMovieByName from '../utils/getMovieByName';
 
 const MoviesPage = () => {
-    const movies = [];
-    // const [searchTerm, setSearchTerm] = useState('');
-    // const [searchedMovies, setSearchedMovies] = useState();
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const { filmName } = event.target.elements;
-        console.log('Search term:', filmName.value);
+    const movies = null;
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [results, setResults] = useState();
 
+    const handleChangeForm = (event) => {
+        event.preventDefault();
+        const query = event.target;
+        // console.log('Search term:', query.value);
+        setSearchParams({
+            query: query.value,
+        });
     };
+    const handleSubmitForm = (event) => {
+        event.preventDefault();
+        const query = event.target;
+        const formData = new FormData(query);
+        // console.log('Search term:', query);
+        setSearchParams(formData);
+    }
+
+    useEffect(() => {
+        const query = searchParams.get('query');
+        if (query) {
+            getMovieByName(query)
+                .then(res => {
+                    console.log('Search results:', res.data.results);
+                    setResults(res.data.results);
+                })
+                .catch(err => {
+                    console.error('Error fetching search results:', err);
+                });
+        }
+    }, [searchParams]);
+
+
     return (
         <div className={Css.MoviesPage}>
             <div className={Css.MoviesPageCard}>
                 <form
                     action="/movies"
-                    className={Css.Form} onSubmit={handleSubmit}>
+                    className={Css.Form} onSubmit={handleSubmitForm}>
                     <div className={Css.InputGroup}>
                         <CiSearch
                             color='currentcolor'
                             size={24} />
                         <input
                             className={Css.Input}
-                            name='filmName'
+                            name='query'
+                            onChange={handleChangeForm}
                             type="text"
                             placeholder="Search for a movie..."
                         />
@@ -42,7 +78,8 @@ const MoviesPage = () => {
                     </button>
                 </form>
             </div>
-            {!movies ? <div className={Css.MoviesPageCard}><MovieList data={movies} /></div> : null}
+            {results && <div className={Css.MoviesPageCard}>
+                <MovieList data={results} /></div>}
 
         </div>
     );

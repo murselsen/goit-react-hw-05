@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import Css from './MovieList.module.css';
-import Loader from './Loader';
 
 const MovieList = ({
     data
 }) => {
-    { data && console.log(data) }
     return (
         <div className={Css.MovieList}>
             {data ? (
@@ -17,7 +15,6 @@ const MovieList = ({
                             image={item.poster_path}
                             title={item.title}
                             description={item.overview}
-
                         />
                     )
                 })
