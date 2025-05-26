@@ -16,7 +16,7 @@ import getMovieByName from '../utils/getMovieByName';
 const MoviesPage = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState();
 
     const handleChangeForm = (event) => {
         event.preventDefault();
@@ -34,7 +34,7 @@ const MoviesPage = () => {
         const query = event.target;
         const formData = new FormData(query);
         // console.log('Search term:', query);
-        setSearchParams(formData);
+        setSearchParams({ query: formData.get('query') });
     }
 
     useEffect(() => {
@@ -82,7 +82,7 @@ const MoviesPage = () => {
                 </form>
             </div>
             {console.log("Results:", results)}
-            {results < 0 ? <div className={Css.MoviesPageCard}><MovieList data={results} /></div> : null}
+            {results ? <div className={Css.MoviesPageCard}><MovieList data={results} /></div> : null}
         </div>
     );
 }

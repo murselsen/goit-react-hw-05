@@ -34,7 +34,7 @@ const MovieListItem = ({
     return (
         <div className={Css.MovieItem}>
             <div className={Css.Media}>
-                <img src={'https://image.tmdb.org/t/p/w500/' + image} alt={image.split('.')[0]} />
+                <img src={'https://image.tmdb.org/t/p/w500/' + image} alt={image} />
             </div>
             <div className={Css.Content}>
                 <div className={Css.Info}>
