@@ -30,16 +30,16 @@
 
 .MovieList .MovieItem .Media {
     flex: 1;
-    max-width: 100px;
+    max-width: 300px;
 
 }
 
 .MovieList .MovieItem .Media img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
-    border-radius: 10px;
+    border-radius: 30px;
 }
 
 .MovieList .MovieItem .Content {
@@ -86,3 +86,27 @@
     font-weight: 700;
     transform: scale(1.05);
 }
+
+
+@media (max-width: 1023px) {
+    .MovieList .MovieItem {
+        width: 45%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MovieList .MovieItem .Media {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .MovieList .MovieItem .Content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MovieList .MovieItem .Content .Action {
+        margin-top: 10px;
+    }
+}
+
