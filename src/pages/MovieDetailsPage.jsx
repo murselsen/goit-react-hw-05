@@ -7,12 +7,19 @@ import Css from './MoviesDetailsPage.module.css';
 const MovieDetailsPage = () => {
 
     const [movie, setMovie] = useState(null);
+    const [cast, setCast] = useState([]);
+    const [reviews, setReviews] = useState([]);
+
+    // Get the current tab from the URL
     const location = useLocation();
     const currentTab = location.pathname.split('/').pop();
 
+    // Get the movie ID from the URL parameters
     const params = useParams();
     const { id } = params;
 
+    // Fetch movie details by ID
+    // useEffect to fetch movie details when the component mounts or when the ID changes
     useEffect(() => {
         getMovieById(id)
             .then(({ data }) => {
@@ -47,7 +54,7 @@ const MovieDetailsPage = () => {
                     <div className={Css.Companies}>{production_companies &&
                         production_companies.map(({ logo_path }, index) => {
                             return (
-                            logo_path && <img key={index} src={'https://image.tmdb.org/t/p/w500/' + logo_path} />
+                                logo_path && <img key={index} src={'https://image.tmdb.org/t/p/w500/' + logo_path} />
                             )
                         })} </div>
                 </div>
@@ -58,8 +65,11 @@ const MovieDetailsPage = () => {
             </div>
             <div className={Css.TabContentWrapper}>
                 <div className={currentTab === 'cast' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
-                    <div className='castItem'>
-                        <img />
+                    <div className={Css.CastItem}>
+                        <img src="https://via.placeholder.com/150" alt="Actor" />
+                        <div className={Css.CastContent}>
+                            <h6 className={Css.Name}>Mürsel</h6>
+                        </div>
                     </div>
                 </div>
                 <div className={currentTab === 'reviews' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}></div>
