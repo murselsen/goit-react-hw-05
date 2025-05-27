@@ -1,14 +1,15 @@
 import { useState, useEffect, Children } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import getMovieById from '../utils/getMovieById';
+import getMovieCreditsById from '../utils/getMovieCreditsById';
 // Css 
 import Css from './MoviesDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
 
     const [movie, setMovie] = useState(null);
-    const [cast, setCast] = useState([]);
-    const [reviews, setReviews] = useState([]);
+    const [cast, setCast] = useState(null);
+    const [reviews, setReviews] = useState(null);
 
     // Get the current tab from the URL
     const location = useLocation();
@@ -30,7 +31,13 @@ const MovieDetailsPage = () => {
             .catch((error) => {
                 console.error('Error fetching movie details:', error);
             });
-
+        getMovieCreditsById(id)
+            .then(({ data }) => {
+                setCast(data);
+                console.log('Movie credits fetched:', data);
+            }).catch((error) => {
+                console.error('Error fetching movie credits:', error);
+            });
     }, [id]);
 
     const { title, tagline, poster_path, overview, vote_average, vote_count, genres, production_companies } = movie || {};
@@ -65,10 +72,12 @@ const MovieDetailsPage = () => {
             </div>
             <div className={Css.TabContentWrapper}>
                 <div className={currentTab === 'cast' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
+
                     <div className={Css.CastItem}>
-                        <img src="https://via.placeholder.com/150" alt="Actor" />
+                        <img src={'https://image.tmdb.org/t/p/w500/qqAKuswRZdUNNjMSry396gLpWsm.jpg'} className={Css.Image} alt="Actor" />
                         <div className={Css.CastContent}>
-                            <h6 className={Css.Name}>Mürsel</h6>
+                            <h4 className={Css.Name}>Mürsel</h4>
+                            <h6 className={Css.Character}>Arcade Judge</h6>
                         </div>
                     </div>
                 </div>
