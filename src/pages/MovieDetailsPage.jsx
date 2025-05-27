@@ -78,7 +78,7 @@ const MovieDetailsPage = () => {
                 <a href={`/movies/${id}/cast`} className={currentTab === 'cast' ? `${Css.Tab} ${Css.Active}` : Css.Tab}><b>Cast</b></a>
                 <a href={`/movies/${id}/reviews`} className={currentTab === 'reviews' ? `${Css.Tab} ${Css.Active}` : Css.Tab}><b>Reviews</b></a>
             </div>
-            <div className={Css.TabContentWrapper}>
+            <div className={currentTab === 'cast' || currentTab === 'reviews' ? `${Css.TabContentWrapper}`}>
                 <div className={currentTab === 'cast' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
                     {cast && cast.length > 0 ? (
                         cast.map(({ profile_path, name, character }, index) => (
