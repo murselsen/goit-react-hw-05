@@ -42,7 +42,6 @@ const MoviesPage = () => {
         if (query) {
             getMovieByName(query)
                 .then(res => {
-                    console.log(res.data.results)
                     setResults(res.data.results);
                 })
                 .catch(err => {
@@ -81,8 +80,7 @@ const MoviesPage = () => {
                     </button>
                 </form>
             </div>
-            {console.log("Results:", results)}
-            {results ? <div className={Css.MoviesPageCard}><MovieList data={results} /></div> : null}
+            {results ? <div className={Css.MoviesPageCard}><MovieList data={results} /></div> : <div className={Css.MoviesPageCard}><p className={Css.error}>Film Not Found !</p></div>}
         </div>
     );
 }

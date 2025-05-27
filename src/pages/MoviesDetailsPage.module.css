@@ -72,3 +72,36 @@
     width: 100%;
     line-height: 1.4;
 }
+
+
+.Companies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.Companies img {
+    width: 100%;
+    max-width: 125px;
+    object-fit: contain;
+}
+
+.Tabs {
+    margin-block: 15px;
+    display: flex;
+    width: 100%;
+}
+
+.Tabs .Tab {
+    width: 50%;
+    background: var(--color-fourth);
+    color: var(--color-secondary);
+    text-align: center;
+    border-inline: 5px solid var(--color-secondary);
+    padding: 10px;
+}
+
+.Tabs .Tab.Active {
+    background: var(--color-secondary);
+    color: var(--color-fourth);
+}

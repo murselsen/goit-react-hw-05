@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, Children } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import getMovieById from '../utils/getMovieById';
 // Css 
 import Css from './MoviesDetailsPage.module.css';
@@ -7,6 +7,8 @@ import Css from './MoviesDetailsPage.module.css';
 const MovieDetailsPage = () => {
 
     const [movie, setMovie] = useState(null);
+    const location = useLocation();
+    const currentTab = location.pathname.split('/').pop();
 
     const params = useParams();
     const { id } = params;
@@ -24,8 +26,10 @@ const MovieDetailsPage = () => {
 
     }, [id]);
 
-    const { title, poster_path, overview, vote_average, vote_count, genres } = movie || {};
-    console.log("Movie: ", movie);
+    const { title, tagline, poster_path, overview, vote_average, vote_count, genres, production_companies } = movie || {};
+
+    const genresMap = genres ? genres.map(genre => genre.name).join(', ') : 'No genres available';
+
     return (
 
         <div className={Css.MoviesPage}>
@@ -35,9 +39,30 @@ const MovieDetailsPage = () => {
                 </div>
                 <div className={Css.Content}>
                     <h1 className={Css.Title}>{title}</h1>
-                    <ContentItem label="User Score:" value={`${Math.round(vote_average * 10)}%`} />
+                    <p className={Css.Description}>{tagline}</p>
+                    <ContentItem label="User Score:" altValue={`${Math.round(vote_average * 10)}% ` + `Vote: (${vote_count})`} />
                     <ContentItem label="Overview:" altValue={overview} />
+                    <ContentItem label="Genres:" altValue={genresMap} />
+                    <ContentItem label="Production Companies:" />
+                    <div className={Css.Companies}>{production_companies &&
+                        production_companies.map(({ logo_path }, index) => {
+                            return (
+                            logo_path && <img key={index} src={'https://image.tmdb.org/t/p/w500/' + logo_path} />
+                            )
+                        })} </div>
                 </div>
+            </div>
+            <div className={Css.Tabs}>
+                <a href={`/movies/${id}/cast`} className={currentTab === 'cast' ? `${Css.Tab} ${Css.Active}` : Css.Tab}><b>Cast</b></a>
+                <a href={`/movies/${id}/reviews`} className={currentTab === 'reviews' ? `${Css.Tab} ${Css.Active}` : Css.Tab}><b>Reviews</b></a>
+            </div>
+            <div className={Css.TabContentWrapper}>
+                <div className={currentTab === 'cast' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
+                    <div className='castItem'>
+                        <img />
+                    </div>
+                </div>
+                <div className={currentTab === 'reviews' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}></div>
             </div>
         </div>
     );
@@ -57,3 +82,4 @@ const ContentItem = ({ label, value, altValue }) => {
 
 
 export default MovieDetailsPage
+

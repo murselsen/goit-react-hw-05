@@ -9,10 +9,10 @@
 }
 
 .MovieList .MovieItem {
-    width: 45%;
+    width: 42.5%;
     height: auto;
     min-height: 200px;
-    max-height: fit-content;
+    max-height: 350px;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 1px 1px 1px var(--color-secondary);
@@ -109,4 +109,3 @@
         margin-top: 10px;
     }
 }
-
