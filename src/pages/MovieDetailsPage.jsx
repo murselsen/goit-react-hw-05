@@ -87,7 +87,18 @@ const MovieDetailsPage = () => {
                     )}
 
                 </div>
-                <div className={currentTab === 'reviews' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}></div>
+                <div className={currentTab === 'reviews' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
+                    {reviews && reviews.length > 0 ? (
+                        reviews.map(({ author, content }, index) => (
+                            <div key={index} className={Css.Review}>
+                                <h4 className={Css.Author}>{author}</h4>
+                                <p className={Css.Content}>{content}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p className={Css.NoReviews}>No reviews available.</p>
+                    )}
+                </div>
             </div>
         </div>
     );
