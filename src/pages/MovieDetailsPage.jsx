@@ -4,6 +4,7 @@ import getMovieById from '../utils/getMovieById';
 import getMovieCreditsById from '../utils/getMovieCreditsById';
 // Css 
 import Css from './MoviesDetailsPage.module.css';
+import getMovieReviewsById from '../utils/getMovieReviewsById';
 
 const MovieDetailsPage = () => {
 
@@ -37,6 +38,13 @@ const MovieDetailsPage = () => {
                 console.log('Movie credits fetched:', data);
             }).catch((error) => {
                 console.error('Error fetching movie credits:', error);
+            });
+        getMovieReviewsById(id)
+            .then(({ data }) => {
+                setReviews(data.results);
+                console.log('Movie reviews fetched:', data);
+            }).catch((error) => {
+                console.error('Error fetching movie reviews:', error);
             });
     }, [id]);
 
