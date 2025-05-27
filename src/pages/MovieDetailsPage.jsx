@@ -33,7 +33,7 @@ const MovieDetailsPage = () => {
             });
         getMovieCreditsById(id)
             .then(({ data }) => {
-                setCast(data);
+                setCast(data.cast);
                 console.log('Movie credits fetched:', data);
             }).catch((error) => {
                 console.error('Error fetching movie credits:', error);
@@ -72,14 +72,20 @@ const MovieDetailsPage = () => {
             </div>
             <div className={Css.TabContentWrapper}>
                 <div className={currentTab === 'cast' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
-
-                    <div className={Css.CastItem}>
-                        <img src={'https://image.tmdb.org/t/p/w500/qqAKuswRZdUNNjMSry396gLpWsm.jpg'} className={Css.Image} alt="Actor" />
-                        <div className={Css.CastContent}>
-                            <h4 className={Css.Name}>Mürsel</h4>
-                            <h6 className={Css.Character}>Arcade Judge</h6>
-                        </div>
-                    </div>
+                        {cast && cast.length > 0 ? (
+                            cast.map(({ profile_path, name, character }, index) => (
+                                <div key={index} className={Css.CastItem}>
+                                    <img src={'https://image.tmdb.org/t/p/w500/' + profile_path} className={Css.Image} alt="Actor" />
+                                    <div className={Css.CastContent}>
+                                        <h4 className={Css.Name}>{name}</h4>
+                                        <h6 className={Css.Character}>{character}</h6>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p className={Css.NoCast}>No cast information available.</p>
+                        )}
+                    
                 </div>
                 <div className={currentTab === 'reviews' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}></div>
             </div>
