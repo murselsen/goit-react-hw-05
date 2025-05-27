@@ -72,20 +72,20 @@ const MovieDetailsPage = () => {
             </div>
             <div className={Css.TabContentWrapper}>
                 <div className={currentTab === 'cast' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}>
-                        {cast && cast.length > 0 ? (
-                            cast.map(({ profile_path, name, character }, index) => (
-                                <div key={index} className={Css.CastItem}>
-                                    <img src={'https://image.tmdb.org/t/p/w500/' + profile_path} className={Css.Image} alt="Actor" />
-                                    <div className={Css.CastContent}>
-                                        <h4 className={Css.Name}>{name}</h4>
-                                        <h6 className={Css.Character}>{character}</h6>
-                                    </div>
+                    {cast && cast.length > 0 ? (
+                        cast.map(({ profile_path, name, character }, index) => (
+                            <div key={index} className={Css.CastItem}>
+                                <img src={profile_path ? ('https://image.tmdb.org/t/p/w500/' + profile_path) : `https://eujinnlucashow.github.io/goit-react-hw-05-movies/static/media/placeholder.766050a83a9c288363de.png`} className={Css.Image} alt="Actor" />
+                                <div className={Css.CastContent}>
+                                    <h4 className={Css.Name}>{name}</h4>
+                                    <h6 className={Css.Character}>{character}</h6>
                                 </div>
-                            ))
-                        ) : (
-                            <p className={Css.NoCast}>No cast information available.</p>
-                        )}
-                    
+                            </div>
+                        ))
+                    ) : (
+                        <p className={Css.NoCast}>No cast information available.</p>
+                    )}
+
                 </div>
                 <div className={currentTab === 'reviews' ? `${Css.TabContent} ${Css.Active}` : Css.TabContent}></div>
             </div>
